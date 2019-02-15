@@ -8,25 +8,28 @@
 public class StackFactory {
 
     public Stack getImplementacion(String forma){
+
+        //Factory que, dependiendo del parametro string, creara una instancia del tipo a utilizar.
+
         if ("1".equals(forma)) {
-            System.out.println("USASTE ARRAYLIST");
+            System.out.println("ArrayList");
             return new StackArrayList();
             
         }
         else if (forma.equals("2")) {
-            System.out.println("USASTE Vector");
+            System.out.println("Vector");
             return new StackVector();
         }
         else if (forma.equals("3")) {
-            System.out.println("USASTE List single");
+            System.out.println("Single List");
             return new SinglyLinkedList();
         }
         else if(forma.equals("4")){
-            System.out.print("USASTE List Circular");
+            System.out.print("Circular List");
             return new CircularList();
         }
         else if (forma.equals("5")) {
-            System.out.println("Usaste DoubleLinked List");
+            System.out.println("DoubleLinked List");
             return new DoublyLinkedList();
         }
         return null;

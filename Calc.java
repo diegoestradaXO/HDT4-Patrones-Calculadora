@@ -6,63 +6,43 @@
  *  Calculadora: implementación
  */
 public class Calc implements Calculadora {
-
-	/**
-	 * ArrayList que se utiliza para calcular las operaciones
-	 */
-         StackFactory stackF= new StackFactory();
+	//Utilizacion de Factory
+     StackFactory stackF= new StackFactory();
 	 private Stack<String> miStack;
          private static Calc miCalc;
          
-	/**
-	 * Constructor de la clase
-         * @param forma es la forma de la implementacion que va a devolver
-	 */
+	//Constructor
 	private Calc(String forma) {
 		
                 miStack=stackF.getImplementacion(forma);
 	}
-        /**
-         * Este static es el getCalc
-         * @param forma la forma de la implementacion
-         * @return una instancia unica de cada objeto
-         */
+		/*
+			SINGLETON
+		 */
         public static Calc getCalc(String forma){
-            if (miCalc==null) {
+            if (miCalc==null) {//Si no existe una calculadora, la crea
                 miCalc= new Calc(forma);
             }
-            return miCalc;
+            return miCalc;//Si ya existe, la retorna
         }
 
-	/**
-         * Este método retorna un stack
-         * @return un objeto tipo String de mi 
-         */
+
 	public Stack<String> getMiStack() {
 		return miStack;
 	}
 
-	/**
-         * Este método setea un STack
-         * @param miStack un objeto tipo Stack
-         */
+
 	public void setMiStack(Stack<String> miStack) {
 		this.miStack = miStack;
 	}
 
-	/**
-         *  * Es el método que se encarga de calcular el resultado de la operación en el
-	 * archivo de texto por medio de los métodos descritos anteriormente
-         * @param expresion es la expresion a operar
-         * @return un double con el resultado
-         */
          @Override
 	public double operar(String expresion) {
 		double resultado = 0;
 		String subcadena = "";
 		boolean execute = true;
 
-		// For que corrobora que la expresión contenga únicamente caracteres válidos
+		// Ciclo 'For' que verifica que la expresión tenga únicamente caracteres válidos
 		for (int i = 0; i < expresion.length(); i++) {
 			if (expresion.substring(i, i + 1).contains("1") == false
 					&& expresion.substring(i, i + 1).contains("2") == false
@@ -81,18 +61,13 @@ public class Calc implements Calculadora {
 				execute = false;
 			}
 		}
-		// System.out.println(execute);
-		if (execute == true) {// Si los caracteres de la expresión son válidos, ejecuta la operación
+
+		if (execute == true) {//Realiza operacion si lo anterior es true
 			for (int i = 0; i < expresion.length(); i++) {
 				subcadena = expresion.substring(i, i + 1);
-				// System.out.println(subcadena + "...subcadena");
 				if (!" ".equals(subcadena)) {
-					// System.out.println("Entro al if");
 					switch (subcadena) {
 					case "+":
-						// System.out.println("Entro a suma");
-						// System.out.println(miStack.peek());
-						// System.out.println("Sí pasa el peek");
 						sumar();
 						continue;
 					case "-":
@@ -106,14 +81,9 @@ public class Calc implements Calculadora {
 						continue;
 					default:
 						miStack.push(subcadena);
-						// System.out.println("holi");
-						// System.out.println(miStack.peek());
-						// System.out.println("bye");
 						continue;
 					}
 				}
-				// System.out.println(miStack.peek());
-
 			}
 			resultado = Double.parseDouble(miStack.pop());
 		} else {
@@ -122,24 +92,16 @@ public class Calc implements Calculadora {
 
 		return resultado;
 	}
-
-	/**
-	 * Método para sumar en la lista
-	 */
+		 //Método para sumar
 	private void sumar() {
 		double suma;
-		// System.out.println("Entro al método de suma");
 		double a = Double.parseDouble(miStack.pop());
-		// System.out.println(a);
 		double b = Double.parseDouble(miStack.pop());
-		// System.out.println(b);
 		suma = a + b;
 		miStack.push(String.valueOf(suma));
 	}
 
-	/**
-	 * Método para restar en la lista
-	 */
+	//Metodo para restar
 	private void restar() {
 		double resta;
 		double a = Double.parseDouble(miStack.pop());
@@ -148,9 +110,7 @@ public class Calc implements Calculadora {
 		miStack.push(String.valueOf(resta));
 	}
 
-	/**
-	 * Método para multiplicar en la lista
-	 */
+	//Metodo para multiplicar
 	private void multiplicar() {
 		double multiplicacion;
 		double a = Double.parseDouble(miStack.pop());
@@ -159,22 +119,19 @@ public class Calc implements Calculadora {
 		miStack.push(String.valueOf(multiplicacion));
 	}
 
-	/**
-	 * Método para dividir en la lista
-	 */
+	//Metodo para dividr
 	private void dividir() {
 		double division;
 		double a = Double.parseDouble(miStack.pop());
 		double b = Double.parseDouble(miStack.pop());
 
-		// Try para prevenir la división dentro de 0.
+		//Revision de la division por 0
 		try {
 			division = b / a;
 		} catch (Exception e) {
 			miStack.push(String.valueOf(Double.NaN));
 		}
 		division = b / a;
-
 		miStack.push(String.valueOf(division));
 	}
 

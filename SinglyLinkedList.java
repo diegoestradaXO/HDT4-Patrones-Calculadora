@@ -5,9 +5,7 @@ import java.util.Iterator;
  * Algoritmos y Estructuras de Datos
  * Created by Maria Isabel Ortiz Naranjo 18176
  * Created by Diego Estrada 18540
- *
  * Lista Simplemente encadenada
- * @param <E> un genérico
  */
 public class SinglyLinkedList<E> extends AbstractList<E>{
 
@@ -15,12 +13,10 @@ public class SinglyLinkedList<E> extends AbstractList<E>{
      protected Node<E> head;
 
    public SinglyLinkedList()
-
    {
       head = null;
       count = 0;
    }
-
      @Override
    public int size()
 
@@ -30,22 +26,18 @@ public class SinglyLinkedList<E> extends AbstractList<E>{
 
      @Override
   public void addFirst(E value)
-
   {
-
      head = new Node<>(value, head);
      count++;
   }
      @Override
   public E removeFirst()
-
  {
      Node<E> temp = head;
      head = head.next();
      count--;
      return temp.value();
   }
-
      @Override
   public E getFirst()
 
@@ -54,12 +46,10 @@ public class SinglyLinkedList<E> extends AbstractList<E>{
   }
      @Override
   public void addLast(E value)
-
   {
       Node<E> temp = new Node<>(value,null);
       if (head != null)
      {
-
          Node<E> finger = head;
          while (finger.next() != null)
          {
@@ -68,14 +58,10 @@ public class SinglyLinkedList<E> extends AbstractList<E>{
 		 
          finger.setNext(temp);
       } else head = temp;
-	  
 	  count++;
-	  
    }
-
      @Override
    public boolean contains(E value)
-
   {
       Node<E> finger = head;
 	  
