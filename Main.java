@@ -36,7 +36,7 @@ public class Main {
                         boolean wantsToContinue = true;//Ciclo del programa, mientras siga escogiendo seguir.
                         while(wantsToContinue){
                             System.out.println("=====================================================================\n" +
-                                    "MENU PRINCIPAL: Escoja una de las siguientes opciones ingresado el #" +
+                                    "MENU PRINCIPAL: Escoja una de las siguientes opciones ingresado el #\n" +
                                     "1.ArrayList\n" +
                                     "2.Vector\n" +
                                     "3.Lista Simplemente Encadenada\n" +
@@ -61,7 +61,7 @@ public class Main {
                                             if (Double.isNaN(result)) {
                                                 System.out.println("La operación no devuelve un resultado válido o no puede llevarse a cabo.");
                                             } else {
-                                                System.out.println("Resultado: " + C1.operar(lineaOperacion));
+                                                System.out.println("Resultado: " + C1.operar(lineaOperacion) + " de la operacion: " + lineaOperacion + " , utilizando ArrayList");
                                             }                   break;
                                         }
                                     case 2:
@@ -71,7 +71,7 @@ public class Main {
                                             if (Double.isNaN(result)) {
                                                 System.out.println("La operación no devuelve un resultado válido o no puede llevarse a cabo.");
                                             } else {
-                                                System.out.println("Resultado: " + C2.operar(lineaOperacion));
+                                                System.out.println("Resultado: " + C2.operar(lineaOperacion) + " de la operacion: " + lineaOperacion + " , utilizando Vector");
                                             }                   break;
                                         }
                                     case 3:
@@ -81,7 +81,7 @@ public class Main {
                                             if (Double.isNaN(result)) {
                                                 System.out.println("La operación no devuelve un resultado válido o no puede llevarse a cabo.");
                                             } else {
-                                                System.out.println("Resultado: " + C3.operar(lineaOperacion));
+                                                System.out.println("Resultado: " + C3.operar(lineaOperacion) + " de la operacion: " + lineaOperacion + " , utilizando Lista Simple");
                                             }                   break;
                                         }
                                     case 4:
@@ -91,7 +91,7 @@ public class Main {
                                         if (Double.isNaN(result)) {
                                                 System.out.println("La operación no devuelve un resultado válido o no puede llevarse a cabo.");
                                             } else {
-                                                System.out.println("Resultado: " + C4.operar(lineaOperacion));
+                                                System.out.println("Resultado: " + C4.operar(lineaOperacion) + " de la operacion: " + lineaOperacion + " , utilizando Lista Circular") ;
                                             }                   break;
                                     }
                                     case 5:
@@ -101,14 +101,14 @@ public class Main {
                                         if (Double.isNaN(result)) {
                                                 System.out.println("La operación no devuelve un resultado válido o no puede llevarse a cabo.");
                                             } else {
-                                                System.out.println("Resultado: " + C5.operar(lineaOperacion));
+                                                System.out.println("Resultado: " + C5.operar(lineaOperacion) + " de la operacion: " + lineaOperacion + " , utilizando Lista Doble");
                                             }                   break;
                                         
                                     }
                                     default:
                                         break;
                                 }
-                                System.out.println("Desea realizar otro calculo? 1. Si 2.No");
+                                System.out.println("Desea reaalizar el calculo por otro tipo? 1. Si 2.No");
                                 int againInt = sc.nextInt();
                                 if((againInt>2)||(againInt<1)){
                                     System.out.println("No eligió ninguna de las opciones, se tomara como un No");
