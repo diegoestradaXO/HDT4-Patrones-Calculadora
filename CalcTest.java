@@ -6,12 +6,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Test de clase Calculadora
+ */
 /*
  * Hoja de trabajo No.4, Patrones de Diseño
  * Algoritmos y Estructuras de Datos
  * Created by Maria Isabel Ortiz Naranjo 18176
  * Created by Diego Estrada 18540
- *  Test de clase Calculadora
  */
 public class CalcTest {
 
